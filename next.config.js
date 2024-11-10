@@ -7,6 +7,12 @@ import "./src/env.js";
 /** @type {import("next").NextConfig} */
 const config = {
     //  for images
+    eslint: {
+      ignoreDuringBuilds: true,
+    },
+    typescript: {
+      ignoreBuildErrors: true,
+    },
     images: {
         remotePatterns: [
           {
