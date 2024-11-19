@@ -1,14 +1,18 @@
+// 'use client'
 import Image from "next/image";
 import Link from "next/link";
 
 import { Home, Users, FolderGit2, LogIn, UserCircle, BlocksIcon , NewspaperIcon } from "lucide-react";
 import { SignOutButton, ThemeButton } from "./ThemeButton";
 import { auth, signIn, signOut } from "~/server/auth";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+
 
 export async function Navbar() {
   const session = await auth();
 
   return (
+
     <div className="navbar mx-auto flex max-w-6xl bg-base-100">
       <div className="flex-1">
         <Link href="/">
@@ -55,6 +59,7 @@ export async function Navbar() {
                     Points Table 
                   </Link>
                 </li>
+                
                 <li>
                   <SignOutButton />
                 </li>
@@ -68,7 +73,9 @@ export async function Navbar() {
           </Link>
         )}
         <ThemeButton />
+        <ConnectButton/>
       </div>
     </div>
+
   );
 }

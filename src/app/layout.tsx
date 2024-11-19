@@ -6,6 +6,9 @@ import { type Metadata } from "next";
 import { TRPCReactProvider } from "~/trpc/react";
 import { ThemeProvider } from "~/context/ThemeContext";
 import { Toaster } from "react-hot-toast";
+import { WagmiProvider } from "wagmi";
+import { config } from "~/utils/wagmi";
+import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -21,8 +24,12 @@ export default function RootLayout({
       <body>
         <TRPCReactProvider>
           <ThemeProvider>
-            <Toaster/>
-            {children}
+            <WagmiProvider config={config}>
+              <RainbowKitProvider>
+                <Toaster />
+                {children}
+              </RainbowKitProvider>
+            </WagmiProvider>
           </ThemeProvider>
         </TRPCReactProvider>
       </body>
